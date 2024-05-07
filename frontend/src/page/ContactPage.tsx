@@ -1,3 +1,5 @@
+import { PublicPage } from "../components/page/publicPage/PublicPage";
+
 export const ContactPage: React.FC = () => {
-  return <>Contact Page</>;
+  return <PublicPage>Contact Page</PublicPage>;
 };

@@ -1,3 +1,5 @@
+import { ProtectedPage } from "../components/page/protectedPage/ProtectedPage";
+
 export const ProductPage: React.FC = () => {
-  return <>ProductPage</>;
+  return <ProtectedPage>ProductPage</ProtectedPage>;
 };
