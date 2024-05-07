@@ -15,7 +15,7 @@ export const Login: React.FC = () => {
 
   const onLogin = async () => {
     try {
-      await UserRepo.login(username, password);
+      const session = await UserRepo.login(username, password);
       navigate(Routes.productPage.toPath());
     } catch (error) {
       if (isError(error)) {
@@ -26,7 +26,18 @@ export const Login: React.FC = () => {
     }
   };
 
-  const onRegister = async () => {};
+  const onRegister = async () => {
+    try {
+      const session = await UserRepo.register(username, password);
+      navigate(Routes.productPage.toPath());
+    } catch (error) {
+      if (isError(error)) {
+        setErrorMessage(error.reason);
+      } else {
+        setErrorMessage("Unknown error");
+      }
+    }
+  };
 
   return (
     <Card className={styles.login}>
@@ -43,7 +54,7 @@ export const Login: React.FC = () => {
       />
       <div className={styles.button}>
         <button onClick={onLogin}>Login</button>
-        <button onClick={onRegister}>Login</button>
+        <button onClick={onRegister}>Register</button>
         <button>Cancel</button>
       </div>
       {errorMessage && <div>{errorMessage}</div>}

@@ -1,3 +1,5 @@
+import { AppConfig } from "../AppConfig";
+
 export abstract class RESTApi {
   get<T>(url: string): Promise<T> {
     return new Promise(async (resolve, reject) => {
@@ -13,8 +15,14 @@ export abstract class RESTApi {
 
   post<T>(url: string, data: any): Promise<T> {
     return new Promise(async (resolve, reject) => {
-      const body = JSON.stringify(data);
-      const response = await fetch(url, { method: "POST", mode: "cors", body });
+      const response = await fetch(url, {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const json = await response.json();
       if (response.ok) {
         resolve(json);
@@ -22,5 +30,9 @@ export abstract class RESTApi {
         reject(json);
       }
     });
+  }
+
+  protected get url(): string {
+    return AppConfig.BACKEND_HOST;
   }
 }
