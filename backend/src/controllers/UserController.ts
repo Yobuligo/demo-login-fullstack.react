@@ -15,10 +15,10 @@ export class UserController {
 
   private login() {
     this.router.post("/users/login", (req, res) => {
-      const credentials: ICredentials = req.body();
+      const credentials: ICredentials = req.body;
       const user = sp.find(UserRepoService).findByCredentials(credentials);
       if (!user) {
-        return res.status(404).send(createError("Invalid user credentials"));
+        return res.status(404).send(createError("Invalid user credentials were send"));
       }
 
       const session = sp.find(SessionRepoService).createByUser(user);
@@ -28,7 +28,7 @@ export class UserController {
 
   private register() {
     this.router.post("/users/register", (req, res) => {
-      const credentials: ICredentials = req.body();
+      const credentials: ICredentials = req.body;
       let user = sp.find(UserRepoService).findByUsername(credentials.username);
 
       if (user) {
