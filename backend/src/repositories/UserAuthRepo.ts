@@ -1,7 +1,8 @@
 import { IUserAuth } from "../models/IUserAuth";
 import { ICredentials } from "../shared/models/ICredentials";
+import { IUserAuthRepo } from "./IUserAuthRepo";
 
-class UserAuthRepoDefault {
+export class UserAuthRepo implements IUserAuthRepo {
   private data: IUserAuth[] = [];
 
   findByCredentials(credentials: ICredentials): IUserAuth | undefined {
@@ -12,5 +13,3 @@ class UserAuthRepoDefault {
     );
   }
 }
-
-export const UserAuthRepo = new UserAuthRepoDefault();
