@@ -7,7 +7,7 @@ export const LabeledInput: React.FC<ILabeledInputProps> = (props) => {
   return (
     <>
       <label htmlFor={id}>{props.label}</label>
-      <input id={id} type="text" />
+      <input id={id} type={props.type} />
     </>
   );
 };

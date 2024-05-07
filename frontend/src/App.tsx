@@ -1,6 +1,7 @@
 import React from "react";
-import { LoginPage } from "./page/LoginPage";
+import { RouterProvider } from "react-router-dom";
+import { AppRouter } from "./routes/AppRouter";
 
 export const App: React.FC = () => {
-  return <LoginPage />;
+  return <RouterProvider router={AppRouter} />;
 };
