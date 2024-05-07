@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
+import { LoginPage } from "./page/LoginPage";
 
 export const App: React.FC = () => {
-  return <></>;
+  return <LoginPage />;
 };
