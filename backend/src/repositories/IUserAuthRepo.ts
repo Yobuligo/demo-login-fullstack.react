@@ -3,6 +3,7 @@ import { ICredentials } from "../shared/models/ICredentials";
 import { Service } from "../shared/serviceProvider/Service";
 
 export interface IUserAuthRepo {
+  add(userId: string, credentials: ICredentials): void;
   findByCredentials(credentials: ICredentials): IUserAuth | undefined;
 }
 
