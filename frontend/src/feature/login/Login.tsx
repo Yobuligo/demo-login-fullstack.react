@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserRepo } from "../api/UserRepo";
-import { Card } from "../components/card/Card";
-import { LabeledInput } from "../components/labeledInput/LabeledInput";
-import { Routes } from "../routes/Routes";
+import { UserRepo } from "../../api/UserRepo";
+import { Card } from "../../components/card/Card";
+import { LabeledInput } from "../../components/labeledInput/LabeledInput";
+import { Routes } from "../../routes/Routes";
+import { isError } from "../../shared/utils/isError";
 import styles from "./Login.module.scss";
-import { isError } from "../shared/utils/isError";
 
 export const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -27,16 +27,7 @@ export const Login: React.FC = () => {
   };
 
   const onRegister = async () => {
-    try {
-      const session = await UserRepo.register(username, password);
-      navigate(Routes.productPage.toPath());
-    } catch (error) {
-      if (isError(error)) {
-        setErrorMessage(error.reason);
-      } else {
-        setErrorMessage("Unknown error");
-      }
-    }
+    navigate(Routes.registerPage.toPath());
   };
 
   return (
