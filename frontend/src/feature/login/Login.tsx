@@ -38,6 +38,7 @@ export const Login: React.FC = () => {
       onConfirm={onLogin}
     >
       <LabeledInput
+        autofocus={true}
         label="Username"
         onChange={(username) => setUsername(username)}
         value={username}

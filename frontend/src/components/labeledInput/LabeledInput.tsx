@@ -11,6 +11,7 @@ export const LabeledInput: React.FC<ILabeledInputProps> = (props) => {
     <>
       <label htmlFor={id}>{props.label}</label>
       <input
+        autoFocus={props.autofocus}
         id={id}
         onChange={onChange}
         type={props.type}

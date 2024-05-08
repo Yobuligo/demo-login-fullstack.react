@@ -23,6 +23,8 @@ export const Register: React.FC = () => {
 
   const onChangeLastname = (lastname: string) => setLastname(lastname);
 
+  const onValidate = () => {};
+
   const onRegister = async () => {
     try {
       await UserRepo.register({
@@ -50,6 +52,7 @@ export const Register: React.FC = () => {
       onConfirm={onRegister}
     >
       <LabeledInput
+        autofocus={true}
         onChange={onChangeUsername}
         label="Username"
         value={username}
