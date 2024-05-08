@@ -18,7 +18,7 @@ export const Login: React.FC = () => {
     try {
       const session = await UserRepo.login(username, password);
       context.session.setValue(session);
-      navigate(Routes.productPage.toPath());
+      navigate(Routes.homePage.toPath());
     } catch (error) {
       if (isError(error)) {
         setErrorMessage(error.reason);
