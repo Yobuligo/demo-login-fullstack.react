@@ -1,4 +1,3 @@
-import bodyParser from "body-parser";
 import express from "express";
 import { UserController } from "./controllers/UserController";
 import { loadServices } from "./services/loadServices";
@@ -6,8 +5,8 @@ import { loadServices } from "./services/loadServices";
 loadServices();
 
 const server = express();
-server.use(bodyParser.json());
-server.use((req, res, next) => {
+server.use(express.json());
+server.use((_, res, next) => {
   res.setHeader("access-control-allow-origin", "*");
   res.setHeader(
     "access-control-allow-methods",
