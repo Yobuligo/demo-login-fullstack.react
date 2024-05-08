@@ -4,6 +4,7 @@ import { Service } from "../shared/serviceProvider/Service";
 
 export interface IUserAuthRepo {
   add(userId: string, credentials: ICredentials): void;
+  containsUserId(userId: string): boolean;
   findByCredentials(credentials: ICredentials): IUserAuth | undefined;
 }
 

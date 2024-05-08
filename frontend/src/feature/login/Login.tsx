@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserRepo } from "../../api/UserRepo";
-import { Card } from "../../components/card/Card";
+import { Form } from "../../components/form/Form";
 import { LabeledInput } from "../../components/labeledInput/LabeledInput";
 import { Routes } from "../../routes/Routes";
 import { isError } from "../../shared/utils/isError";
-import styles from "./Login.module.scss";
 
 export const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -26,12 +25,15 @@ export const Login: React.FC = () => {
     }
   };
 
-  const onRegister = async () => {
-    navigate(Routes.registerPage.toPath());
-  };
+  const onCancel = () => navigate(Routes.homePage.toPath());
 
   return (
-    <Card className={styles.login}>
+    <Form
+      confirmCaption="Login"
+      errorMessage={errorMessage}
+      onCancel={onCancel}
+      onConfirm={onLogin}
+    >
       <LabeledInput
         label="Username"
         onChange={(username) => setUsername(username)}
@@ -43,12 +45,7 @@ export const Login: React.FC = () => {
         type="password"
         value={password}
       />
-      <div className={styles.button}>
-        <button onClick={onLogin}>Login</button>
-        <button onClick={onRegister}>Register</button>
-        <button>Cancel</button>
-      </div>
-      {errorMessage && <div>{errorMessage}</div>}
-    </Card>
+      <Link to={Routes.registerPage.toPath()}>Register</Link>
+    </Form>
   );
 };

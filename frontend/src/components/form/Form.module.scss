@@ -1,10 +1,15 @@
-.login {
+.form {
   display: flex;
   flex-direction: column;
   width: 20rem;
 }
 
-.button {
+.errorMessage {
+  margin-top: 1rem;
+  color: red;
+}
+
+.footer {
   text-align: right;
   padding-top: 1.5rem;
 }

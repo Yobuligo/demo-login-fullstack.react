@@ -1,7 +1,7 @@
 import { AppConfig } from "../AppConfig";
 
 export abstract class RESTApi {
-  get<T>(url: string): Promise<T> {
+  protected get<T>(url: string): Promise<T> {
     return new Promise(async (resolve, reject) => {
       const response = await fetch(url, { method: "GET" });
       const json = await response.json();
@@ -13,7 +13,7 @@ export abstract class RESTApi {
     });
   }
 
-  post<T>(url: string, data: any): Promise<T> {
+  protected post<T>(url: string, data: any): Promise<T> {
     return new Promise(async (resolve, reject) => {
       const response = await fetch(url, {
         method: "POST",
