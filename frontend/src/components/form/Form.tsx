@@ -14,7 +14,7 @@ export const Form: React.FC<IFormProps> = (props) => {
         <div className={styles.errorMessage}>{props.errorMessage}</div>
       )}
       <div className={styles.footer}>
-        <button onClick={props.onConfirm}>
+        <button onClick={props.onConfirm} disabled={props.isConfirmDisabled}>
           {props.confirmCaption ?? "Okay"}
         </button>
         <button onClick={props.onCancel}>

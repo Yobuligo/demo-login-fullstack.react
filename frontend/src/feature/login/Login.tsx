@@ -30,10 +30,13 @@ export const Login: React.FC = () => {
 
   const onCancel = () => navigate(Routes.homePage.toPath());
 
+  const isConfirmDisabled = username.length === 0 || password.length === 0;
+
   return (
     <Form
       confirmCaption="Login"
       errorMessage={errorMessage}
+      isConfirmDisabled={isConfirmDisabled}
       onCancel={onCancel}
       onConfirm={onLogin}
     >

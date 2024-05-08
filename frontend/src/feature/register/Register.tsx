@@ -23,7 +23,11 @@ export const Register: React.FC = () => {
 
   const onChangeLastname = (lastname: string) => setLastname(lastname);
 
-  const onValidate = () => {};
+  const isConfirmDisabled =
+    username.length === 0 ||
+    password.length === 0 ||
+    firstname.length === 0 ||
+    lastname.length === 0;
 
   const onRegister = async () => {
     try {
@@ -48,6 +52,7 @@ export const Register: React.FC = () => {
   return (
     <Form
       errorMessage={errorMessage}
+      isConfirmDisabled={isConfirmDisabled}
       onCancel={onCancel}
       onConfirm={onRegister}
     >

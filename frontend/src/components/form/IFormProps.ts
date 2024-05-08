@@ -5,6 +5,7 @@ export interface IFormProps {
   children: ReactNode;
   confirmCaption?: string;
   errorMessage?: string;
+  isConfirmDisabled?: boolean;
   onCancel?: () => void;
   onConfirm?: () => void;
 }
